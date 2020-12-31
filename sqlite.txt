@@ -1,0 +1,21 @@
+CREATE TABLE post (
+	id integer PRIMARY KEY AUTOINCREMENT,
+	link string NOT NULL UNIQUE ,
+	rating string NOT NULL,
+	host string NOT NULL,
+	date_time date NOT NULL
+);
+
+CREATE TABLE tag (
+	id integer PRIMARY KEY AUTOINCREMENT,
+	name string NOT NULL UNIQUE 
+);
+
+CREATE TABLE post_tag (
+	post integer,
+	tag integer,
+	FOREIGN KEY(post) REFERENCES post(id),
+	FOREIGN KEY(tag) REFERENCES tag(id),
+	PRIMARY KEY (post, tag)
+);
+
